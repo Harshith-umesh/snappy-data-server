@@ -6,7 +6,7 @@ from vyper import v
 
 @dataclasses.dataclass
 class PruneConfig:
-    path: str
+    path  : str
     days_to_live: int
 
 
@@ -21,5 +21,7 @@ class Config:
 def get_config() -> Config:
     v.set_config_name("pruner_config")
     v.add_config_path(".")
+
+
     v.read_in_config()
     return Config(prune_configs=v.get("pruner"))
